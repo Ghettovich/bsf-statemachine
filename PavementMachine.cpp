@@ -1,5 +1,9 @@
 #include "PavementMachine.h"
-#include "LiftEvent.h"
+#include "statemachine/LiftEvent.h"
+#include "statemachine/events/LiftIdle.h"
+#include "statemachine/events/LiftMoving.h"
+#include "statemachine/events/LiftArrived.h"
+#include "statemachine/events/LiftEventData.h"
 
 #include <QState>
 #include <QFinalState>
@@ -22,6 +26,10 @@ PavementMachine::PavementMachine() {
   t2->setTargetState(s13);
   s12->addTransition(t2);
 
+  auto *t3 = new LiftArrived(true, false, true);
+  t3->setTargetState(s2);
+  s13->addTransition(t3);
+
   machine.addState(s2);
   machine.setInitialState(s1);
 
@@ -42,6 +50,7 @@ PavementMachine::PavementMachine() {
 
   machine.postEvent(new LiftEvent(false, true, false));
   machine.postEvent(new LiftEvent(false, false, true));
+  machine.postEvent(new LiftEvent(true, false, true));
 }
 
 void PavementMachine::sendLiftToLoad() {

@@ -25,12 +25,19 @@ find_package(Qt5 COMPONENTS
 add_executable(bsf_statemachine
         PavementMachine.h
         PavementMachine.cpp
-        LiftEvent.cpp
-        LiftEvent.h
         main.cpp
         mainwindow.cpp
         mainwindow.h
-        mainwindow.h)
+        mainwindow.h
+        statemachine/LiftEvent.cpp
+        statemachine/LiftEvent.h
+        statemachine/events/LiftIdle.cpp
+        statemachine/events/LiftIdle.h
+        statemachine/events/LiftMoving.cpp
+        statemachine/events/LiftMoving.h
+        statemachine/events/LiftArrived.cpp
+        statemachine/events/LiftArrived.h
+        statemachine/events/LiftEventData.h)
 
 target_link_libraries(bsf_statemachine
         Qt5::Core
