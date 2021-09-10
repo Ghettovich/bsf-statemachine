@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(bsf_statemachine)
+project(qt-stringtransition)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_AUTOMOC ON)
@@ -16,32 +16,4 @@ endif ()
 
 set(CMAKE_PREFIX_PATH "${QT_LOCATION}")
 
-find_package(Qt5 COMPONENTS
-        Core
-        Gui
-        Widgets
-        REQUIRED)
-
-add_executable(bsf_statemachine
-        PavementMachine.h
-        PavementMachine.cpp
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.h
-        statemachine/LiftEvent.cpp
-        statemachine/LiftEvent.h
-        statemachine/events/LiftIdle.cpp
-        statemachine/events/LiftIdle.h
-        statemachine/events/LiftMoving.cpp
-        statemachine/events/LiftMoving.h
-        statemachine/events/LiftArrived.cpp
-        statemachine/events/LiftArrived.h
-        statemachine/events/LiftEventData.h)
-
-target_link_libraries(bsf_statemachine
-        Qt5::Core
-        Qt5::Gui
-        Qt5::Widgets
-        )
-
+add_subdirectory(qt-example)

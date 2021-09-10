@@ -4,9 +4,12 @@
 #include <QMainWindow>
 #include <QToolBar>
 #include <QStatusBar>
+#include <QStateMachine>
+#include <QState>
+#include <QFinalState>
+#include <QAbstractTransition>
 
-#include "PavementMachine.h"
-
+#include "state/LiftIdleState.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,10 +28,15 @@ class MainWindow : public QMainWindow {
 
  public slots:
   void onClickStartPreparingRecipe();
+  void onStartedStatemachine();
+  void onEnteredS2();
+  void onFinishedStateMachine();
+  void onEnteredS13();
 
  private:
   Ui::MainWindow *ui;
-  PavementMachine machine;
+
+  QStateMachine *qmachine = new QStateMachine;
 };
 
 #endif //BSF_STATEMACHINE__MAINWINDOW_H_
